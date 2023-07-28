@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
         config.vm.define "supertimor" do |node|
-            node.vm.box = "ubuntu/xenial64"
+            node.vm.box = "ubuntu/focal64"
             node.vm.hostname = "supertimor"
             node.vm.network :private_network, ip: "168.198.58.58"
             node.vm.network "forwarded_port", guest: 22, host: 22, id: "ssh"
