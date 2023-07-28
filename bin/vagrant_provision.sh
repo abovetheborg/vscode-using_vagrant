@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Keep package updated before making changes
+apt-get update -y
+apt-get upgrade -y
+
 #Create a development user different than vagrant
 useradd uruk
 
@@ -13,6 +17,9 @@ chmod 0700 /home/uruk/.ssh
 chmod 0644 /home/uruk/.ssh/authorized_keys
 
 chown -R uruk:uruk /home/uruk
+
+cp /etc/skel/.bashrc ./.bashrc
+
 
 # Key Management
 # sudo su vagrant -c 'cat /tmp/provision/temp_pub_key.pub >> ~/.ssh/authorized_keys'
@@ -40,8 +47,11 @@ chmod 0600 /home/uruk/.ssh/id_ed25519
 chown -R uruk:uruk /home/uruk/.ssh/id_ed25519
 
 ## Git author properties
-git config --global user.name "Michel JACQUES"
-git config --global user.email "michel.jacques@polymtl.ca"
+su uruk -c "git config --global user.name \"Michel JACQUES\""
+su uruk -c "git config --global user.email \"michel.jacques@polymtl.ca\""
+
+# Install development environment
+apt-get install python3-pip -y
 
 
 # Clean up
