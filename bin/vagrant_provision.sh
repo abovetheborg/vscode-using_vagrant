@@ -19,12 +19,12 @@ touch ${dev_user_home_folder}/.ssh/authorized_keys
 chmod 0700 ${dev_user_home_folder}/.ssh
 chmod 0644 ${dev_user_home_folder}/.ssh/authorized_keys
 
-cp /etc/skel/.bashrc ${dev_user_home_folder}/.bashrc
-chmod 0700 ${dev_user_home_folder}/.bashrc
+# cp /etc/skel/.bashrc ${dev_user_home_folder}/.bashrc
+# chmod 0700 ${dev_user_home_folder}/.bashrc
 
 cp /etc/skel/.bashrc ${dev_user_home_folder}/.profile
 chmod 0700 ${dev_user_home_folder}/.profile
-# echo "export PATH=\"$PATH:${dev_user_home_folder}/.local/bin\"" >> ${dev_user_home_folder}/.bashrc
+echo "export PATH=\"$PATH:${dev_user_home_folder}/.local/bin\"" >> ${dev_user_home_folder}/.profile
 
 
 chown -R ${dev_user}:${dev_user} ${dev_user_home_folder}
@@ -63,6 +63,7 @@ su ${dev_user} -c "git config --global user.email \"michel.jacques@polymtl.ca\""
 
 # Install development environment
 apt-get install python3-pip -y
+apt-get install python3-venv -y
 
 
 # Clean up
